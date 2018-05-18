@@ -8,7 +8,6 @@ def fib(n):
     else:
         return fib(n-1) + fib(n-2)
 
-
 def fib_efficient(n, d):
     global numFibCalls
     numFibCalls += 1
@@ -16,6 +15,16 @@ def fib_efficient(n, d):
         return d[n]
     else:
         ans = fib_efficient(n-1, d) + fib_efficient(n-2, d)
+        d[n] = ans
+        return ans
+
+def fib_efficient_two(n, d):
+    global numFibCalls
+    numFibCalls += 1
+    if n in d:
+        return d[n]
+    else:
+        ans = fib_efficient_two(n-1, d) + d[n-2]
         d[n] = ans
         return ans
 
@@ -29,4 +38,9 @@ numFibCalls = 0 # reset to zero
 
 d = {1: 1, 2: 2}
 print(fib_efficient(fibArg, d))
+print('function calls', numFibCalls)
+
+numFibCalls = 0  # reset to zero
+
+print(fib_efficient_two(fibArg, d))
 print('function calls', numFibCalls)
