@@ -16,8 +16,11 @@ def isPalindrome(s):
 
     return isPal(toChars(s))
 
-print('\nIs eve a palindrome?')
+print('\nIs "eve" a palindrome?')
 print(isPalindrome('eve'))
 
-print('\nIs able was I ere I saw Elba a palindrome?')
+print('\nIs "wombat" a palindrome?')
+print(isPalindrome('wombat'))
+
+print('\nIs "able was I ere I saw Elba" a palindrome?')
 print(isPalindrome('Able was I, ere I saw Elba'))

@@ -10,7 +10,7 @@ def reverse_all(L):
             pass
     L[:] = clone
 
-def reverse_all(L):
+def reverse_all_two(L):
     hold = list(reversed(L))
     for i in hold:
         hold[ hold.index(i) ] = list(reversed(i))

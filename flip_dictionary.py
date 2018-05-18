@@ -17,7 +17,7 @@ def flip(d):
     return new
 
 import bisect
-def flip(d):
+def flippa(d):
     result = {}
 
     for k, v in d.items():
