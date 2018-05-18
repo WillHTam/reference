@@ -32,11 +32,11 @@ def cycle( pay , bal ): # calculates one year
     return bal
 
 while True:
-    print(low, high)
+    print(low, high) # print low and high limits for each scope
     hold = cycle(answer, balance) # calculate resultant balance
     if abs( hold ) < 0.1: # if the end balance is under threshold, break and print
         print( 'Lowest Payment: ' + str( round(answer, 2) ) )
-        break
+        break # break out after printing answer
     elif hold < 0:
         # if result if too high, set upper limit as current guess
         high = answer
