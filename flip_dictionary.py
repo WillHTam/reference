@@ -6,21 +6,27 @@ def flip(d):
     new = {}
     for k in d.values():
         if k not in new.keys():
-            new[k] = []
-            
+            new[k] = []    
     for k,v in d.items():
         new[v].append(k)
-        
     for k,v in new.items():
         new[k] = sorted(v)
-    
+    return new
+
+def flip2(d):
+    new = {}
+    for k in d.keys():
+        if d[k] in new:
+            new[d[k]].append(k)
+        else:
+            new[d[k]] = k
+    for v in new.values():
+        v.sort()
     return new
 
 import bisect
 def flippa(d):
-    result = {}
-
+    new = {}
     for k, v in d.items():
-        bisect.insort(result.setdefault(v, []), k)
-
-    return result
+        bisect.insort(new.setdefault(v, []), k)
+    return new
