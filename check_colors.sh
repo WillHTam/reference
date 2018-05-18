@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Script to show the colours used for different file types
-
 IFS=:
 for SET in $LS_COLORS
 do
