@@ -1,11 +1,10 @@
-# Algorithms & Other
+# Programming, Algorithms, and Other
 
-My material from:
+My notes from:
 
 * MITx 6.00.1  _Introduction to Computer Science_
   * NO Midterm or Final Exam questions are included here.
 * MITx 6.00.2  _Introduction to Computational Thinking and Data Science_
-  * NO Midterm or Final Exam questions are included here.
 * Grokking Algorithms _by Aditya Y. Bhargava_
 * Python Masterclass _by Jose Salvatierra on Udemy_
 
