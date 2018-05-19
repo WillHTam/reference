@@ -1,3 +1,5 @@
+# textbook definition
+
 import random
 
 def quicksort(array, left=0, right=-1):
