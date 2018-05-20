@@ -1,5 +1,5 @@
 # reverse iterable, and reverse any iterables inside those
-# ([0,1], (3,4)) =>  ((4,3), [1,0])
+# ([1,2], (3,4,5)) =>  ((5,4,3), [2,1])
 
 def reverse_all(L):
     clone = L[::-1]

@@ -5,6 +5,8 @@
 # will use * and ** to collect all positional and keyword arguments to store in variables
 # decorator then forwards the collected arguments to the original input argument
 
+import functools
+
 def trace(func):
     @functools.wraps(func)
     # since the function called with a decorator is a new function

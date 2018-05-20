@@ -12,7 +12,7 @@ class LinkedList:
         self.last = None
 
     def insert(self, x):
-        if self.first == None:
+        if self.first is None:
             self.first = Node(x, None)
             self.last = self.first
         elif self.last == self.first:
@@ -24,10 +24,10 @@ class LinkedList:
             self.last = current
 
     def __str__(self):
-        if self.first != None:
+        if self.first is not None:
             current = self.first
             out = 'LinkedList [\n' +str(current.value) +'\n'
-            while current.next != None:
+            while current.next is not None:
                 current = current.next
                 out += str(current.value) + '\n'
             return out + ']'
