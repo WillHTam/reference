@@ -25,7 +25,7 @@ Notes:
 * Floats in Python
   * If there is no integer p such that `x*(2**p)` is a whole number, then internal representation is always an approximation
   * Therefore to strictly test equality do not use `x == y` which tests the binary equality
-  * Instead test for  `abs(x - y) < a_sufficiently_small_number`
+  * Instead test for  `abs(x - y) < a_sufficiently_small_number`use
 * Lists in Python
   * When looping over another list and also performing mutations, clone the list first
     * `clone = list[:]`
@@ -39,3 +39,7 @@ Notes:
   * `sorted(list)` will return a new sorted list
     * `list.sort()` will mutate the original
   * same applies to `reversed(list)` / `list.reverse()`
+* Dictionaries in Python
+  * use `from collections import DefaultDict' to simply adding to dictionary
+    * `dict[key] += 1` can be used even if the dict does not exist
+  * use dict.get(key, default) to try to get the key's value, and return default if it does not exist
