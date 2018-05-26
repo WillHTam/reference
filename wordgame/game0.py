@@ -95,7 +95,7 @@ def displayHand(hand):
     hand: dictionary (string -> int)
     """
     for letter in hand.keys():
-        for j in range(hand[letter]):
+        for _ in range(hand[letter]):
              print(letter,end=" ")       # print all on the same line
     print()                             # print an empty line
 
@@ -117,11 +117,11 @@ def dealHand(n):
     hand={}
     numVowels = n // 3
     
-    for i in range(numVowels):
+    for _ in range(numVowels):
         x = VOWELS[random.randrange(0,len(VOWELS))]
         hand[x] = hand.get(x, 0) + 1
         
-    for i in range(numVowels, n):    
+    for _ in range(numVowels, n):    
         x = CONSONANTS[random.randrange(0,len(CONSONANTS))]
         hand[x] = hand.get(x, 0) + 1
         
@@ -162,10 +162,11 @@ def isValidWord(word, hand, wordList):
     composed of letters in the hand. Otherwise, returns False.
 
     Does not mutate hand or wordList.
-   
+
     word: string
     hand: dictionary (string -> int)
-    wordList: list of lowercase strings  \ # Problem #4: Playing a hand
+    wordList: list of lowercase strings
+    # Problem #4: Playing a hand
     """
     handcopy = hand.copy()
     for i in word:
