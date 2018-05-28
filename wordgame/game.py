@@ -157,6 +157,7 @@ def playaGame(wordList):
                     else:
                         print('Invalid Command')
         elif user_input == 'e':
+            print('bya')
             break
         else:
             print('Invalid Command')
