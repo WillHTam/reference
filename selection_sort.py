@@ -23,7 +23,9 @@ Selection Sort
 - Complexity
     - outer loop executes len(L) times
     - inner loop executes len(L) - i times
-    - therefore, Quadratic complexity O(n^2) where n is len(L)
+    - therefore, Quadratic complexity O(n^2) where n is len(L)g
+
+- advantage in that early stopping the sort still ensures that up to i is sorted
 """
 def selection_sort(L):
     suffix_store = 0
