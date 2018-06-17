@@ -60,14 +60,14 @@ def yieldAllCombos(items):
     """
     N = len(items)
     for i in range(3**N):
-        bag1 = ''
-        bag2 = ''
+        bag1 = []
+        bag2 = []
         for j in range(N):
             k = 3 ** j
             if (i // k) % 3 == 0:
-                bag1 = items[j]
+                bag1.append(items[j])
             elif (i // k) % 3 == 1:
-                bag2 = items[j]
+                bag2.append(items[j])
             else:
                 pass
         yield bag1, bag2
