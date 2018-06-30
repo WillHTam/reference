@@ -12,10 +12,9 @@
 
 class Node():
     def __init__(self, name):
-        try:
-            self.name = name
-        except:
-            raise TypeError
+        if type(name) is not str:
+            raise ValueError
+        self.name = name
     def getName(self):
         return self.name
     def __str__(self):
@@ -132,4 +131,4 @@ DEN: PHX, NY
 LS: BOS
 """
 
-print(buildCityGraph(Graph))
+print(buildCityGraph(Digraph))
