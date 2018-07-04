@@ -8,6 +8,12 @@
     - Digraphs
         - Two kinds of graphs, if the graph is dense (i.e. has a lot of nodes),
             convenient to use an adjacency matrix
+
+    - What about a weighted shortest path
+        - want to minimize the sum of the weights of the edges, not the number of edges
+        - DFS can do this
+        - BFS cannot because it enumerates based solely on the length of the hops
+            - it can only produce the path with the smallest number of hops, not the smallest total weight
 """
 
 
@@ -136,7 +142,7 @@ def DFS(graph, start, end, path, shortest, toPrint=False):
     path = path + [start]
     if toPrint:
         print('Current DFS path:', printPath(path))
-    if start ==end:
+    if start == end:
         return path
     for node in graph.childrenOf(start):
         if node not in path: # avoid cycles
@@ -148,7 +154,39 @@ def DFS(graph, start, end, path, shortest, toPrint=False):
             print('Already visited', node)
     return shortest
 
-def shortestPath(graph, start, end, toPrint=False):
+
+def BFS(graph, start, end, toPrint=False):
+    """
+    Breadth-First Search
+    - explores many paths at once, not one at a time
+    - pathQueue stores all paths currently being explored
+    - each iteration starts by removing a path from pathQueue, and assigning that
+        path to 'tmpPath'
+    - if the last node in tmpPath is end, then that is the shortest path and returned
+        otherwise, a set of new paths is created, each of which extends tmpPath by
+        adding its children, and thus to pathQueue
+    - as soon as it finds a solution, returns it
+        - this is okay because we know that all shorter paths are checked first
+    """
+    initPath = [start]
+    pathQueue = [initPath]
+    if toPrint:
+        print('current BFS path:', printPath(pathQueue))
+    while len(pathQueue) != 0:
+        # get and remove oldest element in pathQueue
+        tmpPath = pathQueue.pop(0)
+        print('Current BFS path:', printPath(tmpPath))
+        lastNode = tmpPath[-1]
+        if lastNode == end:
+            return tmpPath # Explore all paths with n hops 
+                            # before exploring any path with >n hops
+        for nextNode in graph.childrenOf(lastNode):
+            if next not in tmpPath:
+                newPath = tmpPath + [nextNode]
+                pathQueue.append(newPath)
+    return None
+
+def dfsPath(graph, start, end, toPrint=False):
     """ 
     DFS called from this wrapper function
     - this funciton gets recursion started properly 
@@ -156,3 +194,10 @@ def shortestPath(graph, start, end, toPrint=False):
     """
     return DFS(graph, start, end, [], None, toPrint)
     
+
+def bfsPath(graph, start, end, toPrint=False):
+    """
+    Assume graph is a Digraph; start and end are nodes
+    Returns a shortest path from start to end in graph
+    """
+    return BFS(graph, start, end, toPrint)
