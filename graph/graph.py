@@ -10,6 +10,7 @@
             convenient to use an adjacency matrix
 """
 
+
 class Node():
     def __init__(self, name):
         try:
@@ -20,6 +21,7 @@ class Node():
         return self.name
     def __str__(self):
         return self.name
+
 
 class Edge():
     """Allows for defining the direction of an edge"""
@@ -34,6 +36,7 @@ class Edge():
     def __str__(self):
         return self.src.getName() + '->'\
             + self.dest.getName()
+
 
 class Digraph():
     """
@@ -83,6 +86,7 @@ class Digraph():
                     + dest.getName() + '\n'
         return result[:-1] # omit final newline
 
+
 class Graph(Digraph):
     # Graph is a subclasss of Digraph rather than the other way around?
         # Substitution rule:
@@ -100,3 +104,55 @@ class Graph(Digraph):
         Digraph.addEdge(self, edge)
         rev = Edge(edge.getDestination(), edge.getSource())
         Digraph.addEdge(self, rev)
+
+
+def printPath(path):
+    """Assumes path is a list of nodes"""
+    result = ''
+    for i in range(len(path)):
+        result = result + str(path[i])
+        if i != len(path) - 1:
+            result = result + '->'
+    return result
+
+
+def DFS(graph, start, end, path, shortest, toPrint=False):
+    """
+    Depth-First Search
+    - Assumes graph is a Digraph; start and end are nodes
+    - path and shortest are lists of nodes
+    - Returns a shortest path form start to end in graph
+
+    - Similar to left-first depth-first method of enumerating a search tree
+    - Main difference is that grpah might have cycles, so must keep track of what nodes already visited
+
+    - Continues until reaching goal node or node with no children
+    - Search then backtracks until it reaches most recent node with children that it has not visited
+    - Returns shortest path after exploring, if there is one from start to goal
+    - Keeps track of nodes visited to avoid being stuck in a cycle
+    - Keep track of shortest path traveled
+    - Don't bother exploring paths that are longer than the current shortest
+    """
+    path = path + [start]
+    if toPrint:
+        print('Current DFS path:', printPath(path))
+    if start ==end:
+        return path
+    for node in graph.childrenOf(start):
+        if node not in path: # avoid cycles
+            if shortest == None or len(path) < len(shortest):
+                newPath = DFS(graph, node, end, path, shortest, toPrint)
+                if newPath != None:
+                    shortest = newPath
+        elif toPrint:
+            print('Already visited', node)
+    return shortest
+
+def shortestPath(graph, start, end, toPrint=False):
+    """ 
+    DFS called from this wrapper function
+    - this funciton gets recursion started properly 
+    - provides appropriate abstraction
+    """
+    return DFS(graph, start, end, [], None, toPrint)
+    

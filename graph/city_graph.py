@@ -1,4 +1,4 @@
-from graph import Node, Edge, Graph
+from graph import Node, Edge, Graph, Digraph, shortestPath, DFS, printPath
 
 def buildCityGraph(graphType):
     # build the graph as shown in the picture
@@ -32,3 +32,21 @@ LS: BOS
 """
 
 print(buildCityGraph(Graph))
+
+print('~'*15)
+
+def testSP(source, destination):
+    g = buildCityGraph(Digraph)
+    sp = shortestPath(g, g.getNode(source), g.getNode(destination), toPrint=True)
+
+    if sp != None:
+        print('Shortest path from ', source, 'to',
+                destination, 'is', printPath(sp))
+    else:
+        print('There is no path from', source, 'to', destination)
+
+testSP('Chicago', 'Boston')
+
+print('~'*15)
+
+testSP('Boston', 'Phoenix')
