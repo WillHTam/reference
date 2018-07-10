@@ -1,7 +1,7 @@
 from graph import Node, Edge, Graph, Digraph, dfsPath, DFS, printPath, BFS, bfsPath
 
-def split():
-    print('~'*15)
+def split(n):
+    print('~'*n)
 
 def buildCityGraph(graphType):
     # build the graph as shown in the picture
